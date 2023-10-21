@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const apiURL = process.env.REACT_APP_API_URL;
-
 function YourComponent() {
   const [isProfileImageSpinning, setIsProfileImageSpinning] = useState(false);
   const [isProfileSpinning, setIsProfileSpinning] = useState(false);
@@ -26,7 +24,7 @@ function YourComponent() {
     });
 
     axios
-      .post(`${apiURL}/submit-feedback`, data)
+      .post('http://localhost:5000/submit-feedback', data)
       .then((response) => {
         toast.success('Feedback submitted successfully', {
           position: 'top-right',
@@ -56,7 +54,7 @@ function YourComponent() {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/feedbacks`)
+      .get('http://localhost:5000/feedbacks')
       .then((response) => {
         setFeedbacks(response.data);
       })
@@ -197,7 +195,6 @@ function YourComponent() {
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar closeButton={false} />
 
     </nav>
-    {/* ... previous code ... */}
     {/* Desktop version of the About section */}
     <section className="about" id="desktop-about">
       <div className="header">
@@ -232,7 +229,30 @@ function YourComponent() {
         </div>
       </div>
     </section>
-    {/* ... rest of the code ... */}
+    <section id="education-experience">
+            <div className="container">
+                <h2 style={{fontSize: 60}}>Education <span style={{color: 'aqua' }}>&</span> Experience</h2>
+                <ul>
+                    <li>
+                        <strong>2023 - Present</strong><br />
+                        <span>Student in master degree of information system and new technology</span><br />
+                        <span>FSEG Sfax</span>
+                    </li>
+                    <li>
+                        <strong>2020 - 2023</strong><br />
+                        <span>Student in Bachelor's degree software engineering and information system</span><br />
+                        <span>FST Sidi Bouzid</span>
+                    </li>
+                    
+                  
+                    <li>
+                        <strong>2020</strong><br />
+                        <span>Technical baccalaureate</span><br />
+                        <span>Meknassy High School, Sidi Bouzid</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
     <section id="projects">
       <div className="container">
         <h2 style={{fontFamily: 'Verdana, Geneva, Tahoma, sans-serif', fontSize: 60}}>My <span style={{color: 'aqua'}}>Pro</span>jects</h2>
@@ -257,7 +277,6 @@ function YourComponent() {
             <h3>E-commerce website</h3>
             <p>online shopping website<br /> building by <span style={{color: 'rgb(26, 220, 255)', fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}>react</span>,<span style={{fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}> node.</span><span style={{color: 'rgb(115, 237, 115)'}}>js</span> and <span style={{color: 'rgb(105, 176, 93)', fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}>Mongo</span><span style={{color: 'rgb(166, 145, 122)'}}>DB</span></p>
           </div>
-          {/* Add more project cards as needed */}
         </div>
       </div>
     </section>
@@ -285,7 +304,6 @@ function YourComponent() {
             <h3>E-commerce website</h3>
             <p>online shopping website<br /> building by <span style={{color: 'rgb(26, 220, 255)', fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}>react</span>,<span style={{fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}> node.</span><span style={{color: 'rgb(115, 237, 115)'}}>js</span> and <span style={{color: 'rgb(105, 176, 93)', fontFamily: 'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif'}}>Mongo</span><span style={{color: 'rgb(166, 145, 122)'}}>DB</span></p>
           </div>
-          {/* Add more project cards as needed */}
         </div>
       </div>
     </section>
@@ -328,8 +346,7 @@ function YourComponent() {
             <h3>MongoDB</h3>
             <p>Experience in working with MongoDB for database management.</p>
           </div>
-          {/* Add more skill cards as needed */}
-          {/* French Language Card */}
+         
         </div>
       </div>
     </section>
