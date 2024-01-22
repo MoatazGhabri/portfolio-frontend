@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function YourComponent() {
+  const apiUrl = process.env.REACT_APP_API_URL 
   const [isProfileImageSpinning, setIsProfileImageSpinning] = useState(false);
   const [isProfileSpinning, setIsProfileSpinning] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ function YourComponent() {
     });
 
     axios
-      .post(`${REACT_APP_API_URL}/submit-feedback`, data)
+      .post(`${apiUrl}/submit-feedback`, data)
       .then((response) => {
         toast.success('Feedback submitted successfully', {
           position: 'top-right',
@@ -54,7 +55,7 @@ function YourComponent() {
 
   useEffect(() => {
     axios
-      .get(`${REACT_APP_API_URL}/feedbacks`)
+      .get(`${apiUrl}/feedbacks`)
       .then((response) => {
         setFeedbacks(response.data);
       })
