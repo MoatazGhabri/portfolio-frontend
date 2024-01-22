@@ -24,7 +24,7 @@ function YourComponent() {
     });
 
     axios
-      .post('http://localhost:5000/submit-feedback', data)
+      .post(`${REACT_APP_API_URL}/submit-feedback`, data)
       .then((response) => {
         toast.success('Feedback submitted successfully', {
           position: 'top-right',
@@ -54,7 +54,7 @@ function YourComponent() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/feedbacks')
+      .get(`${REACT_APP_API_URL}/feedbacks`)
       .then((response) => {
         setFeedbacks(response.data);
       })
